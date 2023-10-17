@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/*
+*main - Entry point of simple shell
+*
+*Returns: 0 on success
+*/
+
 int main(void) /* Passed void to the main: good practice*/
 {
 char *token;
@@ -33,13 +39,13 @@ if (read_line == -1)
 {
 if (read_line == EOF)
 {
-  free (string);
+free (string);
 my_exit();
 } 
 else
 {
 perror("get_line");
-  free(string);
+free(string);
 return (-1);
 }
 }
@@ -64,7 +70,7 @@ arg[i] = NULL;
 
 if (strcmp(arg[0], "exit") == 0)
 {
-  free(string);
+free(string);
 my_exit();
 }
 else if (strcmp(arg[0], "cd") == 0)

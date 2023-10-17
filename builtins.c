@@ -7,8 +7,6 @@
 void my_exit(void)
 {
   /*sleep (2);Removed the sleep as it is not required*/
-  if (write(STDOUT_FILENO, " exit\n\n\n[Disconnected...]\n", 27) == -1)
-    perror ("write");
   
  
   exit(0);
