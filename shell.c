@@ -1,10 +1,16 @@
 #include "shell.h"
 
-/*
-*main - Entry point of simple shell
-*
-*Returns: 0 on success
-*/
+/**
+ * main - Entry point for the Simple Shell program.
+ *
+ * Description: This function serves as the entry point for a simple
+ * shell program, which allows users to execute commands in a shell
+ * environment. It initializes the shell, reads and processes user
+ * commands, and provides feedback to the user.
+ *
+ * Return: 0 on success, or an error code if there was a problem.
+ */
+
 
 int main(void) /* Passed void to the main: good practice*/
 {
@@ -22,12 +28,13 @@ int i;
 signal(SIGINT, handle_signal);
 /*  signal(SIGTERM, handle_signal); */
 
-while (1) 
+while (1)
 {
 if (isatty(STDIN_FILENO) == 1)
 {
 write_return = write(STDOUT_FILENO, "my$hell$ ", 9);
-if (write_return == -1) {
+if (write_return == -1)
+{
 perror("write");
 }
 fflush(stdout);
@@ -39,9 +46,9 @@ if (read_line == -1)
 {
 if (read_line == EOF)
 {
-free (string);
+free(string);
 my_exit();
-} 
+}
 else
 {
 perror("get_line");
@@ -49,16 +56,16 @@ free(string);
 return (-1);
 }
 }
-else if( read_line < 1)/* To cater for situtations when the user presses just enter"*/
+else if (read_line < 1)/* when the user presses just enter*/
 {
 continue;
 }
-else 
+else
 {
 /* Tokenize commands */
 i = 0;
 token = str_tok(string, delimiter);
-while (token != NULL) 
+while (token != NULL)
 {
 arg[i] = token;
 token = str_tok(NULL, delimiter);
@@ -85,14 +92,14 @@ else
 {
 pid = fork();
 
-if (pid == -1) 
+if (pid == -1)
 {
 perror("fork");
 free(string);
 return (-1);
-} 
-else if (pid == 0) 
-{  
+}
+else if (pid == 0)
+{
 /* Find the command's path and use it as a parameter for execve */
 path = path_get(arg[0]);
 
@@ -112,7 +119,7 @@ waitpid(pid, &status, 0);
 }
 }
 free(string);
-return 0;
+return (0);
 }
 
 
