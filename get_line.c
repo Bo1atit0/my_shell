@@ -9,16 +9,16 @@
 *Returns: number of bytes read
 */
 
-ssize_t our_getline(char **storage, size_t *size, FILE *stream) 
+ssize_t get_line(char **storage, size_t *size, FILE *stream) 
 {
     
     char *fget;
     size_t s_len;
 
   
-    if (stream == NULL) {
-        perror("stream");
-        return (-1);
+    if (stream == NULL) 
+    {
+     perror("stream");
     }
 
     if (*storage == NULL || *size == 0) 
@@ -43,8 +43,8 @@ ssize_t our_getline(char **storage, size_t *size, FILE *stream)
     {
         *size = *size * 2;
         *storage = (char *)realloc(*storage, *size);
-        if (*storage == NULL) {
-            free(*storage); 
+        if (*storage == NULL)
+        { 
             return (-1);
         }
     }
@@ -54,6 +54,5 @@ ssize_t our_getline(char **storage, size_t *size, FILE *stream)
         (*storage)[s_len - 1] = '\0';
         s_len--;
     }
-
     return (s_len);
 }

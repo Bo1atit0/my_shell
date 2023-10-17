@@ -13,6 +13,8 @@ void my_cd(char *dir);
 void my_env(void);
 void my_exit(void);
 
+int is_delimiter(char ch, const char *delim);
+char *str_tok(char *str, const char *delim);
 char *path_get(char *command);
 ssize_t get_line(char **storage, size_t *size,
 FILE *stream);
