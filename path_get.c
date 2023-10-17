@@ -17,13 +17,13 @@ char *path_get(char *command)
     return (NULL);
   }
  
-token = strtok(path_copy, ":");
+token = str_tok(path_copy, ":");
   
   while (token != NULL) 
   {
     strcpy(command_path, token);
     
-    if (command_path[strlen(command_path) - 1] != '/')
+    if (command_path[str_len(command_path) - 1] != '/')
     {
       strcat(command_path, "/");
     }
@@ -33,7 +33,7 @@ token = strtok(path_copy, ":");
       free(path_copy);
       return (strdup(command_path));
     }
-    token = strtok(NULL, ":");
+    token = str_tok(NULL, ":");
   }
   free(path_copy);
   return (command);

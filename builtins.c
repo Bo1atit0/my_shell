@@ -28,7 +28,7 @@ void my_cd(char *path)
    go_home = getenv("HOME");
     if (chdir(go_home) == -1)
     {
-      perror("go_home");
+      perror("chdir");
     }
   }
   else
@@ -37,6 +37,7 @@ void my_cd(char *path)
     {
       perror("chdir");
     }
+    
   }
 }
 
