@@ -8,7 +8,10 @@ void my_exit(void)
 {
   /*sleep (2);Removed the sleep as it is not required*/
   
- 
+ if (write(STDOUT_FILENO, "\n", 1) == -1)
+ {
+   perror ("write");
+ }
   exit(0);
 }
 
