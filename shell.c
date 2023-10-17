@@ -12,6 +12,7 @@
  */
 
 
+
 int main(void) /* Passed void to the main: good practice*/
 {
 char *token;
